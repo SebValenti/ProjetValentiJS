@@ -1,0 +1,47 @@
+<template name="mainLayout">
+    <head>
+        <title>OCShare</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+
+    <div class="container">
+        <div class="row">
+            <header class="col-md-12 jumbotron">
+                <h1>
+                    {{getGlobal 'appName'}} <br />
+                    {{#if getGlobal 'appSlogan'}}
+                    <small class="slogan">{{getGlobal 'appSlogan'}}</small>
+                    {{/if}}
+                </h1>
+            </header>
+        </div>
+        <div>{{#if currentUser}}
+        <p>
+            {{currentUser.username}} est connecté(e)
+
+            <a class="logout">Se déconnecter</a>
+        </p>
+        {{else}}
+        <p>
+            <a href="{{pathFor route='login'}}">Se connecter</a>
+        </p>
+        {{/if}}
+        </div>
+        <div class="row">
+
+            <nav class="col-md-3">{{> menu}}</nav>
+            <section class="col-md-9 well">{{> yield}}</section>
+            <section class ="col-md-9 well">Bienvenu sur le site de Commerce creer par Valenti Sebastien</section>
+        </div>
+        <div class="row">
+            <footer class="col-md-12">
+                <hr />
+                <div class="footer">
+                    <p>Propulsé par Meteor.js !</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    </body>
+</template>
